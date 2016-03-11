@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JadeCore1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Sucursal">
+    <Key>
+      <PropertyRef Name="CodigoSucursal" />
+    </Key>
+    <Property Name="CodigoSucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoEmpresa" Type="Int32" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Area" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+  </EntityType>
+  <EntityContainer Name="JadeCore1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Sucursals" EntityType="Self.Sucursal" />
+  </EntityContainer>
+</Schema>

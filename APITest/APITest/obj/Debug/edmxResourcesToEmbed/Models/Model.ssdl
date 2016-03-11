@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ServiceDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="CodigoEmpresa" Type="int" />
+  </EntityType>
+  <EntityType Name="AspNetUsersPerfilesAsignados">
+    <Key>
+      <PropertyRef Name="CodigoPerfil" />
+      <PropertyRef Name="CodigoEmpresa" />
+      <PropertyRef Name="CodigoMetodo" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="CodigoAspNetUsersPefilesAsignados" Type="int" />
+    <Property Name="CodigoPerfil" Type="int" Nullable="false" />
+    <Property Name="CodigoEmpresa" Type="int" Nullable="false" />
+    <Property Name="CodigoMetodo" Type="int" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Empresa">
+    <Key>
+      <PropertyRef Name="CodigoEmpresa" />
+    </Key>
+    <Property Name="CodigoEmpresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Direccion" Type="varchar" MaxLength="100" />
+    <Property Name="Telefono" Type="varchar" MaxLength="12" />
+    <Property Name="Email" Type="varchar" MaxLength="25" />
+    <Property Name="NameConnectionString" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Metodos">
+    <Key>
+      <PropertyRef Name="CodigoMetodo" />
+    </Key>
+    <Property Name="CodigoMetodo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Metodo" Type="varchar" MaxLength="50" />
+    <Property Name="Controller" Type="varchar" MaxLength="50" />
+    <Property Name="Informatica" Type="bit" />
+    <Property Name="Descripcion" Type="nchar" MaxLength="10" />
+    <Property Name="Estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="Modulos">
+    <Key>
+      <PropertyRef Name="CodigoModulo" />
+    </Key>
+    <Property Name="CodigoModulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodigoModuloPadre" Type="int" />
+    <Property Name="Titulo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Url" Type="varchar" MaxLength="50" />
+    <Property Name="ClaseIcono" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="Perfiles">
+    <Key>
+      <PropertyRef Name="CodigoPerfil" />
+      <PropertyRef Name="CodigoEmpresa" />
+    </Key>
+    <Property Name="CodigoPerfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodigoEmpresa" Type="int" Nullable="false" />
+    <Property Name="Perfil" Type="varchar" MaxLength="20" />
+    <Property Name="Estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="PerfilesMetodos">
+    <Key>
+      <PropertyRef Name="CodigoPerfil" />
+      <PropertyRef Name="CodigoEmpresa" />
+      <PropertyRef Name="CodigoMetodo" />
+    </Key>
+    <Property Name="CodigoPerfilesMetodos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodigoPerfil" Type="int" Nullable="false" />
+    <Property Name="CodigoEmpresa" Type="int" Nullable="false" />
+    <Property Name="CodigoMetodo" Type="int" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_AspNetUsers_Empresa">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="CodigoEmpresa" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="CodigoEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsersPerfilesAsignados_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="AspNetUsersPerfilesAsignados" Type="Self.AspNetUsersPerfilesAsignados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUsersPerfilesAsignados">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsersPerfilesAsignados_PerfilesMetodos">
+    <End Role="PerfilesMetodos" Type="Self.PerfilesMetodos" Multiplicity="1" />
+    <End Role="AspNetUsersPerfilesAsignados" Type="Self.AspNetUsersPerfilesAsignados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PerfilesMetodos">
+        <PropertyRef Name="CodigoPerfil" />
+        <PropertyRef Name="CodigoEmpresa" />
+        <PropertyRef Name="CodigoMetodo" />
+      </Principal>
+      <Dependent Role="AspNetUsersPerfilesAsignados">
+        <PropertyRef Name="CodigoPerfil" />
+        <PropertyRef Name="CodigoEmpresa" />
+        <PropertyRef Name="CodigoMetodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Modulos_Modulos">
+    <End Role="Modulos" Type="Self.Modulos" Multiplicity="0..1" />
+    <End Role="Modulos1" Type="Self.Modulos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Modulos">
+        <PropertyRef Name="CodigoModulo" />
+      </Principal>
+      <Dependent Role="Modulos1">
+        <PropertyRef Name="CodigoModuloPadre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Perfiles_Empresa">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="CodigoEmpresa" />
+      </Principal>
+      <Dependent Role="Perfiles">
+        <PropertyRef Name="CodigoEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PerfilesMetodos_Metodos">
+    <End Role="Metodos" Type="Self.Metodos" Multiplicity="1" />
+    <End Role="PerfilesMetodos" Type="Self.PerfilesMetodos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Metodos">
+        <PropertyRef Name="CodigoMetodo" />
+      </Principal>
+      <Dependent Role="PerfilesMetodos">
+        <PropertyRef Name="CodigoMetodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PerfilesMetodos_Perfiles">
+    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+    <End Role="PerfilesMetodos" Type="Self.PerfilesMetodos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfiles">
+        <PropertyRef Name="CodigoPerfil" />
+        <PropertyRef Name="CodigoEmpresa" />
+      </Principal>
+      <Dependent Role="PerfilesMetodos">
+        <PropertyRef Name="CodigoPerfil" />
+        <PropertyRef Name="CodigoEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="ConexionYPermiso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="varchar" Mode="In" />
+    <Parameter Name="Metodo" Type="varchar" Mode="In" />
+    <Parameter Name="Controlador" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="ServiceDBModelStoreContainer">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsersPerfilesAsignados" EntityType="Self.AspNetUsersPerfilesAsignados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Metodos" EntityType="Self.Metodos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Modulos" EntityType="Self.Modulos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Perfiles" EntityType="Self.Perfiles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PerfilesMetodos" EntityType="Self.PerfilesMetodos" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AspNetUsers_Empresa" Association="Self.FK_AspNetUsers_Empresa">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsersPerfilesAsignados_AspNetUsers" Association="Self.FK_AspNetUsersPerfilesAsignados_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUsersPerfilesAsignados" EntitySet="AspNetUsersPerfilesAsignados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsersPerfilesAsignados_PerfilesMetodos" Association="Self.FK_AspNetUsersPerfilesAsignados_PerfilesMetodos">
+      <End Role="PerfilesMetodos" EntitySet="PerfilesMetodos" />
+      <End Role="AspNetUsersPerfilesAsignados" EntitySet="AspNetUsersPerfilesAsignados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Modulos_Modulos" Association="Self.FK_Modulos_Modulos">
+      <End Role="Modulos" EntitySet="Modulos" />
+      <End Role="Modulos1" EntitySet="Modulos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Perfiles_Empresa" Association="Self.FK_Perfiles_Empresa">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Perfiles" EntitySet="Perfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PerfilesMetodos_Metodos" Association="Self.FK_PerfilesMetodos_Metodos">
+      <End Role="Metodos" EntitySet="Metodos" />
+      <End Role="PerfilesMetodos" EntitySet="PerfilesMetodos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PerfilesMetodos_Perfiles" Association="Self.FK_PerfilesMetodos_Perfiles">
+      <End Role="Perfiles" EntitySet="Perfiles" />
+      <End Role="PerfilesMetodos" EntitySet="PerfilesMetodos" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

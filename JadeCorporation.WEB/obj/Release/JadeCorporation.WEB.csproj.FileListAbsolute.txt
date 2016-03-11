@@ -1,0 +1,6 @@
+C:\Users\Miyabean\Documents\Visual Studio 2013\Projects\JADESolution\JadeCorporation.WEB\bin\JadeCorporation.WEB.dll.config
+C:\Users\Miyabean\Documents\Visual Studio 2013\Projects\JADESolution\JadeCorporation.WEB\bin\JadeCorporation.WEB.dll
+C:\Users\Miyabean\Documents\Visual Studio 2013\Projects\JADESolution\JadeCorporation.WEB\bin\JadeCorporation.WEB.pdb
+C:\Users\Miyabean\Documents\Visual Studio 2013\Projects\JADESolution\JadeCorporation.WEB\obj\Release\JadeCorporation.WEB.csprojResolveAssemblyReference.cache
+C:\Users\Miyabean\Documents\Visual Studio 2013\Projects\JADESolution\JadeCorporation.WEB\obj\Release\JadeCorporation.WEB.dll
+C:\Users\Miyabean\Documents\Visual Studio 2013\Projects\JADESolution\JadeCorporation.WEB\obj\Release\JadeCorporation.WEB.pdb
