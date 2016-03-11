@@ -1,0 +1,2 @@
+JadeCorporation.WEB es el proyecto del webapp esto es la progra del lado del cliente (web browser - front end)
+ApiTest. Disculpen que ya no le cambie el nombre pero esta es la progra del lado del server (web API - back end)
