@@ -1,2 +1,22 @@
+La solucion esta compuesta por 2 proyectos.
+Seleccionar el proyecto ApiTest como principal.
+Archivos de configuracion se los envio por separado ya que no los estaremos publicando en github por razones de seguridad
+
 JadeCorporation.WEB es el proyecto del webapp esto es la progra del lado del cliente (web browser - front end)
+La organizacion del proyecto es por entidades. Ejemplo empresa es una carpeta y ahi tiene toda la progra js que este relacionada con empresa. 
+Ir a app/autenticacion/authService.js
+Cambiar var serviceBase = 'http://localhost:64486/'; por la direccion local que este utilizando su web api local, posiblemente solo tendran que cambiar el puerto.
+En otros archivos, por ejemplo app/autenticacion/loginController.js encontraran lineas de codigo referenciando a este proyecto, en mi caso es "window.location.href = "http://localhost:3883/#/home";"
+en estos casos posiblemente solo necesitaran cambiar el puerto que esta utilizando su web app (JadeCorporation.WEB)
+Las carpetas views siempre tendran archivos html que son las que se cargan dinamicamente a nuestra SPA (single page application)
+En el caso de que tengamos archivos que no tengan definida una entidad usaremos el siguiente patron shared y el tipo de file
+- sharedcontrollers
+- sharedservices
+- sharedviews
+- directivas estaran guardadas unicamente en la carpeta directives
+etc
+index.html es nuestra unica pagina que contiene todas las vistas (html).
+login.html es nuestra pagina para login.
+
 ApiTest. Disculpen que ya no le cambie el nombre pero esta es la progra del lado del server (web API - back end)
+Por el momento esta aceptando peticiones de cualquier host, posteriormente se restringira
